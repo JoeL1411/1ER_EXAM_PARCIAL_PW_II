@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedio de Notas</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .contenedor{
+            width: 400px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h1{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label{
+            font-weight: bold;
+        }
+
+        input{
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover{
+            background-color: darkgreen;
+        }
+
+        .resultado{
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h1>Promedio de 5 Notas</h1>
+
+        <label>Nota 1:</label>
+        <input type="number" id="n1">
+
+        <label>Nota 2:</label>
+        <input type="number" id="n2">
+
+        <label>Nota 3:</label>
+        <input type="number" id="n3">
+
+        <label>Nota 4:</label>
+        <input type="number" id="n4">
+
+        <label>Nota 5:</label>
+        <input type="number" id="n5">
+
+        <button onclick="calcular()">Calcular Promedio</button>
+
+        <div class="resultado" id="resultado"></div>
+
+    </div>
+
+    <script>
+
+        function calcular(){
+
+            let n1 = parseFloat(document.getElementById("n1").value);
+            let n2 = parseFloat(document.getElementById("n2").value);
+            let n3 = parseFloat(document.getElementById("n3").value);
+            let n4 = parseFloat(document.getElementById("n4").value);
+            let n5 = parseFloat(document.getElementById("n5").value);
+
+            if(isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4) || isNaN(n5)){
+                alert("Ingrese todas las notas");
+                return;
+            }
+
+            let promedio = (n1 + n2 + n3 + n4 + n5) / 5;
+
+            let estado = "";
+
+            if(promedio >= 18 && promedio <= 20){
+                estado = "Excelente";
+            }
+            else if(promedio >= 14){
+                estado = "Bueno";
+            }
+            else if(promedio >= 11){
+                estado = "Regular";
+            }
+            else{
+                estado = "Malo";
+            }
+
+            document.getElementById("resultado").innerHTML =
+                "Promedio Final: " + promedio.toFixed(2) +
+                "<br>Estado: " + estado;
+        }
+
+    </script>
+
+</body>
+</html>
